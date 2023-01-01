@@ -16,6 +16,8 @@ app.use((req, res, next) => {
   next();
 });
 
+const PORT = process.env.PORT || 8000;
+
 app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000" }));
 app.use(cookieParser());
@@ -27,6 +29,6 @@ app.use("/api/comments", commentRouters);
 app.use("/api/likes", likeRouters);
 app.use("/api/relationships", relationshipRouters);
 
-app.listen(8000, () => {
-  console.log("Connected on port 8000");
+app.listen(PORT, () => {
+  console.log("Connected on port " + PORT);
 });
