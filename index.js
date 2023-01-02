@@ -11,15 +11,15 @@ import relationshipRouters from "./routes/relationships.js";
 
 const app = express();
 // Add Access Control Allow Origin headers
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", true);
-  next();
-});
 
 const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
