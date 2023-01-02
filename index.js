@@ -21,7 +21,11 @@ const PORT = process.env.PORT || 8000;
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://viraly-client.onrender.com",
+    origin: [
+      "https://viraly-client.onrender.com",
+      "https://viraly-client.onrender.com/api/auth/login",
+      "https://viraly-client.onrender.com/api/auth/register",
+    ],
   })
 );
 app.use(cookieParser());
