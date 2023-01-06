@@ -10,20 +10,19 @@ import likeRouters from "./routes/likes.js";
 import relationshipRouters from "./routes/relationships.js";
 
 const app = express();
-// Add Access Control Allow Origin headers
+
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", true);
   next();
 });
 
 const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: "http://viraly-client.onrender.com",
-  })
-);
+
 app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
