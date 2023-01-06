@@ -11,7 +11,7 @@ import relationshipRouters from "./routes/relationships.js";
 
 const app = express();
 
-app.use(cors({ credentials: true, origin: "*" }));
+app.use(cors({ credentials: true, origin: true }));
 
 const PORT = process.env.PORT || 8000;
 

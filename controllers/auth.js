@@ -10,7 +10,7 @@ export const registerUser = (req, res) => {
 
   db.query(q, [req.body.username], (error, data) => {
     if (error) return res.status(500).json(error);
-    if (data.length) return res.status(500).json("User already exists");
+    if (data?.length) return res.status(500).json("User already exists");
 
     const q =
       "INSERT INTO users (`username`, `email`, `name`, `password`) VALUES (?)";
