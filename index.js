@@ -11,9 +11,7 @@ import relationshipRouters from "./routes/relationships.js";
 
 const app = express();
 
-app.use(
-  cors({ credentials: true, origin: "https://viraly-client.onrender.com/" })
-);
+app.use(cors({ credentials: true, origin: "*" }));
 
 const PORT = process.env.PORT || 8000;
 
