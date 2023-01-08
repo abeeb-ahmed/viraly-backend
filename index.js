@@ -11,11 +11,21 @@ import relationshipRouters from "./routes/relationships.js";
 
 const app = express();
 
-app.use(cors({ credentials: true, origin: true }));
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Credentials", true);
+  next();
+});
+app.use(express.json());
+app.use(
+  cors({
+    origin: [
+      "https://viraly-client.onrender.com",
+      "https://www.viraly-client.onrender.com",
+    ],
+  })
+);
 
 const PORT = process.env.PORT || 8000;
-
-app.use(express.json());
 
 app.use(cookieParser());
 
